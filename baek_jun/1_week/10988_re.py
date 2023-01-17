@@ -1,2 +1,2 @@
 str = input()
-print(1 if str[::-1]==str else 0)
+print(1 if str==str[::-1] else 0)

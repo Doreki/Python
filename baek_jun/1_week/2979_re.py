@@ -1,15 +1,16 @@
-price = list(map(int,input().split()))
-arr = [0]*104
+a,b,c = map(int,input().split())
+arr = [0]*100
 for _ in range(3):
     start,end = map(int,input().split())
     for i in range(start,end):
         arr[i] +=1
+
 result = 0
-for a in arr:
-    if a==1:
-        result +=price[0]
-    if a==2:
-        result +=price[1]*2
-    if a==3:
-        result +=price[2]*3
+for ar in arr:
+    if ar==1:
+        result+=a
+    if ar==2:
+        result+=2*b
+    if ar==3:
+        result+=3*c
 print(result)
