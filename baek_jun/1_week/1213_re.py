@@ -1,25 +1,24 @@
 import collections
 
 str = input()
-str = list(str)
-str.sort()
-counter = collections.Counter(str)
+arr = list(str)
+arr.sort()
+counter = collections.Counter(arr)
 count = 0
 ans = ""
+cent = ""
 flag = False
-odd=""
 for c in counter.items():
-    ch,num = c
-    if num%2==1:
+    ch = c[0]
+    num = c[1]
+    if num%2 !=0:
         count+=1
-        ans += ch*((num-1)//2)
-        odd=ch
-    else:
-        ans += ch*(num//2)
+        cent += ch
     if count>1:
         flag=True
-        break
-if not flag:
-    print(ans+odd+ans[::-1])
-else:
+    ans +=ch*(num//2)
+
+if flag:
     print("I'm Sorry Hansoo")
+else:
+    print(ans+cent+ans[::-1])
