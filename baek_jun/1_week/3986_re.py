@@ -1,13 +1,18 @@
 n = int(input())
 count = 0
 for _ in range(n):
+    str = input()
     stack = []
-    arr = list(input())
-    for a in arr:
-        if stack and stack[-1]==a:
+    for s in str:
+        if not stack:
+            stack.append(s)
+            continue
+        if stack[-1] == s:
             stack.pop()
             continue
-        stack.append(a)
-    if not stack:
+        else:stack.append(s)
+    if stack:
+        continue
+    else:
         count +=1
 print(count)
