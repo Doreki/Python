@@ -9,20 +9,22 @@ startX = 0
 endY = 0
 endX = m-1
 
-visited = [[False] * m for _ in range(n)]
+visited = [[0] * m for _ in range(n)]
 
 dy = [0,-1,0,1]
 dx = [1,0,-1,0]
 
 
-def bfs(y,x):
+def dfs(y,x):
     count = 0
-    visited[y][x] = True
-    q = collections.deque()
-    q.append([y,x])
+    stack = []
+    stack.append([y,x])
 
-    while q:
-        y,x = q.popleft()
+    while stack:
+        y,x = stack.pop()
+        count +=1
+        visited[y][x]= count
+        print(y,x)
         for i in range(4):
             ny = y+dy[i]
             nx = x+dx[i]
@@ -30,11 +32,18 @@ def bfs(y,x):
                 continue
             if arr[ny][nx] == 'T':
                 continue
+            stack.append([ny,nx])
             if ny==endY and nx==endX:
-                 count +=1
-            visited[ny][nx] = True
-            q.append([ny,nx])
-    return count
+                count += 1
+                visited[ny][nx] = count
+                for i in visited:
+                    for j in i:
+                        print(j, end=" ")
+                    print()
+                print()
+                return count
 
-result = bfs(startY,startX)
+
+
+result = dfs(startY,startX)
 print(result)
