@@ -1,14 +1,16 @@
-import itertools
+from itertools import combinations
 
 arr = []
+
 for _ in range(9):
     arr.append(int(input()))
 
-comb = list(itertools.combinations(arr,7))
-ans = []
-for c in comb:
-    if sum(c) == 100:
-        ans = list(c)
-ans.sort()
-for a in ans:
-    print(a)
+combi = list(combinations(arr, 7))
+
+for comb in combi:
+    if sum(comb) == 100:
+        comb = list(comb)
+        break
+comb.sort()
+for com in comb:
+    print(com)
